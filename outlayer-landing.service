@@ -4,8 +4,8 @@ After=network.target
 
 [Service]
 Type=simple
-User=www-data
-WorkingDirectory=/opt/outlayer.ai
+User=nextjs-user
+WorkingDirectory=/home/nextjs-user/code/outlayer.ai
 ExecStart=/usr/bin/node server.js
 Restart=on-failure
 RestartSec=5
