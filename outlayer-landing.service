@@ -6,7 +6,7 @@ After=network.target
 Type=simple
 User=nextjs-user
 WorkingDirectory=/home/nextjs-user/code/outlayer.ai
-ExecStart=/usr/bin/node server.js
+ExecStart=/usr/local/bin/node server.js
 Restart=on-failure
 RestartSec=5
 Environment=PORT=3001
