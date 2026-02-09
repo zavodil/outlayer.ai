@@ -1310,6 +1310,18 @@ img {
   flex-wrap: wrap;
 }
 
+.token-badge {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text);
+  font-family: var(--mono);
+}
+
 .coming-soon {
   text-align: center;
   padding: 3rem;
