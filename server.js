@@ -28,11 +28,18 @@ function serveHtml(filePath, res) {
 }
 
 app.use(express.static(path.join(__dirname, 'public'), {
-  maxAge: isDev ? 0 : '1d',
   etag: true,
+  lastModified: true,
   setHeaders(res, filePath) {
-    if (filePath.endsWith('.html') || isDev) {
+    if (filePath.endsWith('.html')) {
       res.setHeader('Cache-Control', 'no-cache, no-store');
+    } else if (/\.(css|js)$/.test(filePath)) {
+      // Short cache + must-revalidate: browser checks etag on every visit
+      // With ?v=hash in HTML, deploys bust cache immediately
+      res.setHeader('Cache-Control', 'public, max-age=300, must-revalidate');
+    } else {
+      // Images, fonts — cache longer
+      res.setHeader('Cache-Control', 'public, max-age=86400');
     }
   }
 }));
