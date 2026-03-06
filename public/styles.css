@@ -381,10 +381,10 @@ img {
 
 .section-tag {
   display: inline-block;
-  font-size: 0.8125rem;
-  font-weight: 600;
+  font-size: 1.125rem;
+  font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.12em;
   color: var(--orange);
   margin-bottom: 1rem;
 }
@@ -1346,6 +1346,392 @@ img {
 
 .coming-soon a:hover {
   opacity: 0.8;
+}
+
+/* ===== AT A GLANCE — OS TILES ===== */
+.os-tiles {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  max-width: 1100px;
+  margin: 0 auto;
+  justify-content: center;
+}
+
+.os-tile {
+  flex: 0 0 calc(33.333% - 0.75rem);
+  padding: 1.75rem;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  background: rgba(255, 255, 255, 0.025);
+  transition: border-color 0.3s, background 0.3s, transform 0.3s;
+}
+
+.os-tile:hover {
+  border-color: rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.05);
+  transform: translateY(-2px);
+}
+
+.os-tile-icon {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  background: rgba(255, 136, 0, 0.08);
+  color: var(--orange);
+  margin-bottom: 1rem;
+  flex-shrink: 0;
+}
+
+.os-tile h4 {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: var(--text);
+  letter-spacing: -0.01em;
+}
+
+.os-tile p {
+  font-size: 0.8125rem;
+  color: var(--text-dim);
+  line-height: 1.65;
+  margin: 0;
+}
+
+.os-tile p em {
+  font-style: normal;
+  color: var(--text-muted);
+}
+
+.os-tile--live {
+  border-color: rgba(0, 255, 136, 0.15);
+  background: rgba(0, 255, 136, 0.03);
+}
+
+.os-tile--live:hover {
+  border-color: rgba(0, 255, 136, 0.3);
+  background: rgba(0, 255, 136, 0.06);
+}
+
+.os-tile--live .os-tile-icon {
+  background: rgba(0, 255, 136, 0.1);
+  color: var(--green);
+}
+
+.os-tile--live h4 {
+  color: var(--green);
+}
+
+.os-tile--live .badge-dot {
+  width: 10px;
+  height: 10px;
+}
+
+.os-tiles .fade-in:nth-child(2)  { transition-delay: 0.05s; }
+.os-tiles .fade-in:nth-child(3)  { transition-delay: 0.10s; }
+.os-tiles .fade-in:nth-child(4)  { transition-delay: 0.15s; }
+.os-tiles .fade-in:nth-child(5)  { transition-delay: 0.20s; }
+.os-tiles .fade-in:nth-child(6)  { transition-delay: 0.25s; }
+.os-tiles .fade-in:nth-child(7)  { transition-delay: 0.30s; }
+.os-tiles .fade-in:nth-child(8)  { transition-delay: 0.35s; }
+.os-tiles .fade-in:nth-child(9)  { transition-delay: 0.40s; }
+.os-tiles .fade-in:nth-child(10) { transition-delay: 0.45s; }
+.os-tiles .fade-in:nth-child(11) { transition-delay: 0.50s; }
+.os-tiles .fade-in:nth-child(12) { transition-delay: 0.55s; }
+
+@media (max-width: 900px) {
+  .os-tile { flex: 0 0 calc(50% - 0.5rem); }
+}
+
+@media (max-width: 520px) {
+  .os-tile { flex: 0 0 100%; }
+  .os-tiles { gap: 0.75rem; }
+}
+
+/* ===== OS COMPARISON ===== */
+.os-comparison {
+  display: flex;
+  align-items: stretch;
+  gap: 1.5rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.os-arrow {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.os-col {
+  flex: 1;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.os-col-highlight {
+  border-color: rgba(255, 107, 53, 0.2);
+  background: linear-gradient(135deg, rgba(255, 107, 53, 0.03), rgba(0, 255, 136, 0.02));
+}
+
+.os-col-header {
+  padding: 1.5rem 1.5rem 1rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.os-col-label {
+  display: block;
+  font-size: 1.25rem;
+  font-weight: 800;
+  font-family: var(--mono);
+  margin-bottom: 0.25rem;
+}
+
+.os-col-desc {
+  font-size: 0.8125rem;
+  color: var(--text-dim);
+}
+
+.os-col-items {
+  padding: 0.5rem 0;
+}
+
+.os-item {
+  display: flex;
+  flex-direction: column;
+  padding: 0.75rem 1.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.os-item:last-child {
+  border-bottom: none;
+}
+
+.os-item-name {
+  font-size: 0.875rem;
+  font-weight: 600;
+  font-family: var(--mono);
+  color: var(--text);
+}
+
+.os-col-highlight .os-item-name {
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.os-item-desc {
+  font-size: 0.75rem;
+  color: var(--text-dim);
+  margin-top: 0.125rem;
+}
+
+/* ===== SYSCALL GRID ===== */
+.syscall-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+}
+
+.syscall-card {
+  padding: 2rem;
+}
+
+.syscall-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  gap: 0.5rem;
+}
+
+.syscall-name {
+  font-family: var(--mono);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.syscall-equiv {
+  font-size: 0.6875rem;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+}
+
+.syscall-card h4 {
+  font-size: 1.0625rem;
+  font-weight: 700;
+  margin-bottom: 0.625rem;
+}
+
+.syscall-card p {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+/* ===== POLICY GRID ===== */
+.policy-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.25rem;
+  margin-top: 4rem;
+  margin-bottom: 3rem;
+}
+
+.policy-card {
+  padding: 1.75rem;
+}
+
+.policy-card h4 {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.policy-card p {
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.policy-card code {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  background: rgba(255, 255, 255, 0.06);
+  padding: 0.125rem 0.375rem;
+  border-radius: 4px;
+  color: var(--green);
+}
+
+/* ===== CUSTODY TRUST TABLE ===== */
+.custody-trust {
+  max-width: 900px;
+  margin: 0 auto;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.custody-trust-row {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr 1fr 1fr 1fr;
+  gap: 0.75rem;
+  padding: 0.875rem 1.5rem;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+  align-items: center;
+}
+
+.custody-trust-row:last-child {
+  border-bottom: none;
+}
+
+.custody-trust-header {
+  background: rgba(255, 255, 255, 0.02);
+  font-weight: 600;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: 0.6875rem;
+}
+
+.custody-role {
+  font-weight: 600;
+  color: var(--text);
+  font-size: 0.8125rem;
+}
+
+/* ===== TRUST COLUMNS ===== */
+.trust-columns {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  max-width: 900px;
+  margin: 0 auto 3rem;
+}
+
+.trust-col {
+  padding: 2.5rem;
+}
+
+.trust-col-heading {
+  font-size: 1.125rem;
+  font-weight: 700;
+  margin-bottom: 0.375rem;
+}
+
+.trust-col-sub {
+  font-size: 0.8125rem;
+  color: var(--text-dim);
+  margin-bottom: 1.25rem;
+}
+
+.trust-list {
+  list-style: none;
+}
+
+.trust-list li {
+  padding: 0.5rem 0;
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  line-height: 1.5;
+}
+
+/* ===== CONDITIONS GRID ===== */
+.conditions-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  justify-content: center;
+  margin-top: 3rem;
+}
+
+.condition-tag {
+  font-size: 0.8125rem;
+  padding: 0.5rem 1rem;
+  border-radius: 100px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  font-family: var(--mono);
+  font-weight: 500;
+}
+
+/* ===== RESPONSIVE: NEW SECTIONS ===== */
+@media (max-width: 1024px) {
+  .syscall-grid { grid-template-columns: repeat(2, 1fr); }
+  .policy-grid { grid-template-columns: repeat(2, 1fr); }
+  .trust-columns { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 768px) {
+  .os-comparison { flex-direction: column; }
+  .os-arrow { justify-content: center; transform: rotate(90deg); }
+  .syscall-grid { grid-template-columns: 1fr; }
+  .policy-grid { grid-template-columns: 1fr; }
+  .custody-trust-row {
+    grid-template-columns: 1.5fr 1fr 1fr 1fr 1fr;
+    padding: 0.75rem 0.75rem;
+    font-size: 0.6875rem;
+    gap: 0.5rem;
+  }
 }
 
 /* ===== ANIMATIONS ===== */

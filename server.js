@@ -5,6 +5,7 @@ const crypto = require('crypto');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
+const isDev = process.env.NODE_ENV !== 'production';
 
 // Compute cache-busting hash from CSS + JS files at startup
 function buildHash() {
@@ -20,21 +21,25 @@ const ASSET_HASH = buildHash();
 // Inject ?v=hash into HTML before serving
 function serveHtml(filePath, res) {
   let html = fs.readFileSync(filePath, 'utf-8');
-  html = html.replace(/styles\.css(\?[^"]*)?"/g, `styles.css?v=${ASSET_HASH}"`);
-  html = html.replace(/script\.js(\?[^"]*)?"/g, `script.js?v=${ASSET_HASH}"`);
+  const hash = isDev ? Date.now() : ASSET_HASH;
+  html = html.replace(/styles\.css(\?[^"]*)?"/g, `styles.css?v=${hash}"`);
+  html = html.replace(/script\.js(\?[^"]*)?"/g, `script.js?v=${hash}"`);
   res.type('html').send(html);
 }
 
 app.use(express.static(path.join(__dirname, 'public'), {
-  maxAge: '1d',
+  maxAge: isDev ? 0 : '1d',
   etag: true,
   setHeaders(res, filePath) {
-    // No cache for HTML
-    if (filePath.endsWith('.html')) {
-      res.setHeader('Cache-Control', 'no-cache');
+    if (filePath.endsWith('.html') || isDev) {
+      res.setHeader('Cache-Control', 'no-cache, no-store');
     }
   }
 }));
+
+app.get('/platform', (req, res) => {
+  serveHtml(path.join(__dirname, 'public', 'platform.html'), res);
+});
 
 app.get('/products', (req, res) => {
   serveHtml(path.join(__dirname, 'public', 'products.html'), res);

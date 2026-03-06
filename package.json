@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "node server.js",
-    "dev": "node server.js"
+    "dev": "npx -y nodemon --watch public --watch server.js server.js"
   },
   "dependencies": {
     "express": "^4.21.0"
