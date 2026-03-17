@@ -52,6 +52,10 @@ app.get('/products', (req, res) => {
   serveHtml(path.join(__dirname, 'public', 'products.html'), res);
 });
 
+app.get('/intents', (req, res) => {
+  serveHtml(path.join(__dirname, 'public', 'intents.html'), res);
+});
+
 app.get('*', (req, res) => {
   serveHtml(path.join(__dirname, 'public', 'index.html'), res);
 });

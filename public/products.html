@@ -19,14 +19,12 @@
   <nav class="nav" id="nav">
     <div class="nav-inner">
       <a href="/" class="nav-logo">
-        <img src="outlayer.png" alt="OutLayer" height="32">
+        <img src="symbol2d.png" alt="OutLayer" height="32">
       </a>
       <div class="nav-links">
-        <a href="/#kernel">The Kernel</a>
-        <a href="/#custody">Agent Custody</a>
-        <a href="/#trust">Trust Model</a>
         <a href="/platform">Platform</a>
         <a href="/products" class="active">Products</a>
+        <a href="/intents">Intents</a>
         <a href="https://outlayer.fastnear.com/docs/getting-started" target="_blank" rel="noopener">Docs</a>
         <a href="https://github.com/fastnear/near-outlayer" target="_blank" rel="noopener" class="nav-icon" aria-label="GitHub">
           <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd"/></svg>
@@ -211,8 +209,78 @@
     </div>
   </section>
 
+  <!-- near.fm -->
+  <section class="section" id="near-fm">
+    <div class="container">
+      <div class="product-hero fade-in">
+        <div class="product-badge">
+          <span class="badge-dot"></span>
+          Live in Production
+        </div>
+        <h2 class="product-title">near.fm</h2>
+        <p class="product-tagline">AI music generation &amp; social marketplace powered by OutLayer agents</p>
+      </div>
+
+      <div class="product-features-grid">
+        <div class="product-feature glass-card fade-in">
+          <h4>AI Music Generation</h4>
+          <p>Generate songs with Suno AI, publish on-chain, earn tips from listeners. Anyone can create &mdash; no musical skills required. All tracks stored on NEAR via FastFS.</p>
+        </div>
+        <div class="product-feature glass-card fade-in">
+          <h4>Payment Checks for Credits</h4>
+          <p>Users buy credits via <strong>OutLayer payment checks</strong>. Deposit USDC/USDT &rarr; create check &rarr; send to near.fm. Atomic, gasless, no middlemen. 100 credits = $1.</p>
+        </div>
+        <div class="product-feature glass-card fade-in">
+          <h4>Agent-Powered Treasury</h4>
+          <p>The near.fm server uses an OutLayer agent wallet as treasury. It peeks and claims payment checks via the custody API &mdash; validating token, amount, and status before crediting users.</p>
+        </div>
+        <div class="product-feature glass-card fade-in">
+          <h4>Premium Subscriptions</h4>
+          <p>$10/month premium via payment checks. 40 free daily credits, gift subscriptions for other users. Same atomic payment flow &mdash; check claimed and subscription activated simultaneously.</p>
+        </div>
+      </div>
+
+      <div class="product-security fade-in">
+        <h3>How Payments Work</h3>
+        <div class="product-comparison">
+          <div class="product-comp-row product-comp-header">
+            <span>Step</span>
+            <span class="product-comp-highlight">What Happens</span>
+          </div>
+          <div class="product-comp-row">
+            <span>1. Deposit</span>
+            <span>User sends USDC/USDT to their OutLayer wallet via NEAR Intents</span>
+          </div>
+          <div class="product-comp-row">
+            <span>2. Create check</span>
+            <span>User creates a payment check from intents balance (gasless)</span>
+          </div>
+          <div class="product-comp-row">
+            <span>3. Send to near.fm</span>
+            <span>User sends <code>check_key</code> to the near.fm API</span>
+          </div>
+          <div class="product-comp-row">
+            <span>4. Validate</span>
+            <span>Server peeks check via OutLayer API &mdash; verifies token, amount, status</span>
+          </div>
+          <div class="product-comp-row">
+            <span>5. Claim &amp; credit</span>
+            <span>Server claims check atomically &amp; credits user in same DB transaction</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-cta fade-in">
+        <a href="https://near.fm" target="_blank" class="btn btn-primary btn-lg">
+          Visit near.fm
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 12l8-8M6 4h6v6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
   <!-- More products coming -->
-  <section class="section">
+  <section class="section section-dark">
     <div class="container">
       <div class="coming-soon fade-in">
         <h3>More Products Coming</h3>
@@ -226,7 +294,7 @@
     <div class="container">
       <div class="footer-inner">
         <div class="footer-brand">
-          <img src="outlayer.png" alt="OutLayer" height="28">
+          <img src="symbol2d.png" alt="OutLayer" height="28">
           <p>Verifiable OS for AI Agents.<br>Hardware-grade security out of the box.</p>
         </div>
         <div class="footer-links">

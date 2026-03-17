@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NEAR Intents for AI Agents — OutLayer</title>
+  <meta name="description" content="The first production-ready NEAR Intents integration for AI agents. Cross-chain swaps, deposits, withdrawals — with custody-grade security, policy engine, multisig, and audit logs.">
+  <link rel="icon" type="image/png" href="outlayer.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <canvas id="bg-canvas"></canvas>
+  <div class="grain-overlay"></div>
+
+  <!-- Navigation -->
+  <nav class="nav" id="nav">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo">
+        <img src="symbol2d.png" alt="OutLayer" height="32">
+      </a>
+      <div class="nav-links">
+        <a href="/platform">Platform</a>
+        <a href="/products">Products</a>
+        <a href="/intents" class="active">Intents</a>
+        <a href="https://outlayer.fastnear.com/docs/getting-started" target="_blank" rel="noopener">Docs</a>
+        <a href="https://github.com/fastnear/near-outlayer" target="_blank" rel="noopener" class="nav-icon" aria-label="GitHub">
+          <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd"/></svg>
+        </a>
+        <a href="https://x.com/out_layer" target="_blank" rel="noopener" class="nav-icon" aria-label="Twitter">
+          <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+        </a>
+      </div>
+      <button class="nav-mobile-toggle" id="mobile-toggle" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ==================== HERO ==================== -->
+  <section class="hero" style="min-height: auto; padding: 10rem 1.5rem 4rem;">
+    <div class="hero-content">
+      <div class="hero-badge fade-in">
+        <span class="badge-dot"></span>
+        Live on NEAR Mainnet
+      </div>
+      <h1 class="hero-title fade-in">
+        <span class="hero-line-1">NEAR Intents</span>
+        <span class="hero-line-2">for <span class="gradient-text">AI Agents</span></span>
+      </h1>
+      <p class="hero-subtitle fade-in">
+        The first production-ready NEAR Intents integration built for autonomous agents.
+        Cross-chain swaps, deposits, withdrawals, 200+ tokens &mdash;
+        with custody-grade security, policy engine, and hardware-attested key management.
+      </p>
+      <div class="hero-stats fade-in">
+        <div class="stat">
+          <span class="stat-value">35+ Chains</span>
+          <span class="stat-label">NEAR / ETH / BTC / SOL ...</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat">
+          <span class="stat-value">200+ Tokens</span>
+          <span class="stat-label">Cross-Chain Trading</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat">
+          <span class="stat-value">Gasless</span>
+          <span class="stat-label">Swaps &amp; Withdrawals</span>
+        </div>
+      </div>
+    </div>
+    <div class="hero-glow"></div>
+  </section>
+
+  <!-- ==================== GIVE YOUR AGENT THE SKILL ==================== -->
+  <section class="section section-dark" id="quickstart">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-tag">Quick Start</span>
+        <h2>Give Your Agent<br><span class="gradient-text">the Skill</span></h2>
+        <p class="section-subtitle">Share this URL with any AI agent &mdash; Claude, GPT, or your own. The agent reads the skill file and learns how to register a wallet, swap tokens, and manage funds autonomously.</p>
+      </div>
+
+      <!-- Skill URL copy block -->
+      <div class="skill-url-block fade-in" style="max-width: 680px; margin: 0 auto 3rem;">
+        <div class="skill-url-inner">
+          <code class="skill-url-text" id="skill-url">https://skills.outlayer.ai/agent-custody/SKILL.md</code>
+          <button class="skill-url-copy" id="copy-skill-btn" onclick="copySkillUrl()">Copy</button>
+        </div>
+        <p class="skill-url-hint">Share this with your AI agent or paste into the chat</p>
+      </div>
+
+      <!-- Interactive terminal log -->
+      <div class="agent-terminal fade-in" id="agent-terminal" style="max-width: 680px; margin: 0 auto;">
+        <div class="code-header">
+          <span class="code-dot" style="background:#ff5f57"></span>
+          <span class="code-dot" style="background:#febc2e"></span>
+          <span class="code-dot" style="background:#28c840"></span>
+          <span class="code-title">AI Agent Chat</span>
+        </div>
+        <div class="terminal-body" id="terminal-body"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== BEST RATES ==================== -->
+  <section class="section section-dark" id="rates">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-tag">Best Rates for Agents</span>
+        <h2>The Cheapest Way to Trade on <span class="gradient-text">NEAR Intents</span></h2>
+        <p class="section-subtitle">An AI agent can't register for an NEAR Intents API key on its own. Without one, every swap costs <strong>0.2%</strong> in protocol fees. OutLayer uses its own authenticated API key &mdash; so your agent pays only <strong>0.0001%</strong> &mdash; the base NEAR Intents protocol fee.</p>
+      </div>
+
+      <div class="rates-grid fade-in">
+        <div class="glass-card" style="text-align: center; padding: 2rem;">
+          <p style="color: var(--text-dim); font-size: 0.875rem; margin-bottom: 0.5rem;">Without API key</p>
+          <p style="font-size: 2.25rem; font-weight: 800; color: var(--text-muted);">0.2%</p>
+          <p style="color: var(--text-dim); font-size: 0.8125rem; margin-top: 0.5rem;">per swap</p>
+        </div>
+        <div class="glass-card" style="text-align: center; padding: 2rem; border-color: var(--green);">
+          <p style="color: var(--green); font-size: 0.875rem; margin-bottom: 0.5rem;">Via OutLayer</p>
+          <p style="font-size: 2.25rem; font-weight: 800; color: var(--green);">0.0001%</p>
+          <p style="color: var(--text-dim); font-size: 0.8125rem; margin-top: 0.5rem;">per swap &mdash; 2000&times; less</p>
+        </div>
+      </div>
+      <p class="fade-in" style="text-align: center; color: var(--text-dim); font-size: 0.8125rem; margin-top: 1.5rem; max-width: 540px; margin-left: auto; margin-right: auto;">
+        OutLayer holds an authenticated NEAR Intents API key. Every swap your agent makes goes through our key &mdash; no registration, no KYC, no extra steps. Just the base protocol fee of 1 pip.
+      </p>
+    </div>
+  </section>
+
+  <!-- ==================== ZERO-KEY WALLET ==================== -->
+  <section class="section" id="wallet">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-tag">How It Works</span>
+        <h2>Your Agent Never Touches a <span class="gradient-text">Private Key</span></h2>
+        <p class="section-subtitle">One API call creates a wallet. The private key is generated and sealed inside an Intel TDX enclave using NEAR MPC network &mdash; it never leaves the hardware. Your agent operates with a simple API key.</p>
+      </div>
+
+      <div style="max-width: 680px; margin: 0 auto;" class="fade-in">
+        <div class="intents-command glass-card">
+          <div class="intents-command-header">
+            <code class="syscall-name">POST /register</code>
+          </div>
+          <h4>Create a Wallet</h4>
+          <p>One call &mdash; no seed phrases, no key management, no configuration. The agent gets an API key and a NEAR account. That's all it needs.</p>
+          <div class="code-block" style="margin-top: 1rem;">
+            <pre><code><span class="code-comment">// Response</span>
+{ <span class="code-string">"api_key"</span>:         <span class="code-string">"wk_a11b22c33d44e..."</span>,
+  <span class="code-string">"near_account_id"</span>: <span class="code-string">"a1b2c3d4e5f6...a1b2"</span>,
+  <span class="code-string">"handoff_url"</span>:     <span class="code-string">"https://dashboard.outlayer.ai/wallet/fund?to=..."</span> }</code></pre>
+          </div>
+        </div>
+
+        <div style="display: flex; flex-direction: column; gap: 1rem; margin-top: 1.5rem;">
+          <div style="display: flex; align-items: flex-start; gap: 1rem;">
+            <span style="color: var(--green); font-size: 1.25rem; flex-shrink: 0;">&#x1f512;</span>
+            <p style="color: var(--text-muted); font-size: 0.9rem; margin: 0;"><strong style="color: var(--text);">Key lives in hardware.</strong> Generated inside Intel TDX, re-derived per operation via NEAR MPC. Never exported, never stored in RAM.</p>
+          </div>
+          <div style="display: flex; align-items: flex-start; gap: 1rem;">
+            <span style="color: var(--green); font-size: 1.25rem; flex-shrink: 0;">&#x1f511;</span>
+            <p style="color: var(--text-muted); font-size: 0.9rem; margin: 0;"><strong style="color: var(--text);">Agent uses API key only.</strong> All wallet operations go through <code>Authorization: Bearer &lt;api_key&gt;</code>. The agent never signs transactions itself.</p>
+          </div>
+          <div style="display: flex; align-items: flex-start; gap: 1rem;">
+            <span style="color: var(--green); font-size: 1.25rem; flex-shrink: 0;">&#x1f6e1;&#xfe0f;</span>
+            <p style="color: var(--text-muted); font-size: 0.9rem; margin: 0;"><strong style="color: var(--text);">You stay in control.</strong> Policy engine, spending limits, multisig approvals, emergency freeze &mdash; all enforced at the hardware level, not by the agent.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== INTENTS COMMANDS ==================== -->
+  <section class="section section-dark" id="commands">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-tag">NEAR Intents API</span>
+        <h2>Full Intents Access.<br><span class="gradient-text">Production Ready.</span></h2>
+        <p class="section-subtitle">Tokens, balances, swaps, deposits, withdrawals &mdash; every NEAR Intents operation available as a REST API and kernel syscall for autonomous agents.</p>
+      </div>
+
+      <!-- tokens -->
+      <div class="intents-command glass-card fade-in">
+        <div class="intents-command-header">
+          <code class="syscall-name">GET /wallet/v1/tokens</code>
+        </div>
+        <h4>List &amp; Search Tokens</h4>
+        <p>~200 tradeable tokens across 20+ chains. Each token includes <code>defuse_asset_id</code>, decimals, and supported chains. Your agent always knows what's available.</p>
+        <div class="code-block" style="margin-top: 1rem;">
+          <pre><code><span class="code-comment">// Response</span>
+{ <span class="code-string">"tokens"</span>: [
+    { <span class="code-string">"symbol"</span>: <span class="code-string">"USDC"</span>, <span class="code-string">"chains"</span>: [<span class="code-string">"near"</span>, <span class="code-string">"ethereum"</span>, <span class="code-string">"solana"</span>, ...],
+      <span class="code-string">"defuse_asset_id"</span>: <span class="code-string">"nep141:usdc.near"</span>, <span class="code-string">"decimals"</span>: <span class="code-fn">6</span> },
+    ...
+]}</code></pre>
+        </div>
+      </div>
+
+      <!-- balances -->
+      <div class="intents-command glass-card fade-in">
+        <div class="intents-command-header">
+          <code class="syscall-name">GET /wallet/v1/balance</code>
+        </div>
+        <h4>Check Balances</h4>
+        <p>Query wallet balance on any chain, or intents balance (funds deposited into NEAR Intents for trading). Specify <code>source=intents</code> for intents balance.</p>
+        <div class="code-block" style="margin-top: 1rem;">
+          <pre><code><span class="code-comment">// Wallet balance</span>
+GET /wallet/v1/balance?chain=<span class="code-string">near</span>
+
+<span class="code-comment">// Intents balance (for swaps)</span>
+GET /wallet/v1/balance?source=<span class="code-string">intents</span>&token=<span class="code-string">usdc.near</span></code></pre>
+        </div>
+      </div>
+
+      <!-- deposit -->
+      <div class="intents-command glass-card fade-in">
+        <div class="intents-command-header">
+          <code class="syscall-name">POST /wallet/v1/intents/deposit</code>
+        </div>
+        <h4>Deposit to Intents</h4>
+        <p>Move tokens from the agent's wallet into NEAR Intents for trading. Automatic storage registration &mdash; no manual <code>storage_deposit</code> needed.</p>
+        <div class="code-block" style="margin-top: 1rem;">
+          <pre><code>{ <span class="code-string">"token"</span>: <span class="code-string">"wrap.near"</span>, <span class="code-string">"amount"</span>: <span class="code-string">"1000000000000000000000000"</span> }</code></pre>
+        </div>
+      </div>
+
+      <!-- quote -->
+      <div class="intents-command glass-card fade-in">
+        <div class="intents-command-header">
+          <code class="syscall-name">POST /wallet/v1/intents/swap/quote</code>
+        </div>
+        <h4>Get Swap Quote</h4>
+        <p>Preview the exchange rate before committing. Returns <code>amount_out</code>, <code>min_amount_out</code>, and solver details. Read-only &mdash; no funds are moved.</p>
+        <div class="code-block" style="margin-top: 1rem;">
+          <pre><code>{ <span class="code-string">"token_in"</span>:  <span class="code-string">"nep141:wrap.near"</span>,
+  <span class="code-string">"token_out"</span>: <span class="code-string">"nep141:usdc.near"</span>,
+  <span class="code-string">"amount_in"</span>: <span class="code-string">"1000000000000000000000000"</span> }
+
+<span class="code-comment">// &rarr; { "amount_out": "5230000", "min_amount_out": "5178000" }</span></code></pre>
+        </div>
+      </div>
+
+      <!-- swap -->
+      <div class="intents-command glass-card fade-in">
+        <div class="intents-command-header">
+          <code class="syscall-name">POST /wallet/v1/intents/swap</code>
+          <span class="intents-gasless-badge">Gasless</span>
+        </div>
+        <h4>Cross-Chain Swap</h4>
+        <p>NEP-413 signed, solver relay pays gas. Swap between any supported tokens across 20+ chains. Same request body as the quote &mdash; just swap the endpoint.</p>
+        <div class="code-block" style="margin-top: 1rem;">
+          <pre><code><span class="code-comment">// Swap NEAR &rarr; USDC</span>
+{ <span class="code-string">"token_in"</span>:  <span class="code-string">"nep141:wrap.near"</span>,
+  <span class="code-string">"token_out"</span>: <span class="code-string">"nep141:usdc.near"</span>,
+  <span class="code-string">"amount_in"</span>: <span class="code-string">"1000000000000000000000000"</span> }</code></pre>
+        </div>
+      </div>
+
+      <!-- transfer -->
+      <div class="intents-command glass-card fade-in">
+        <div class="intents-command-header">
+          <code class="syscall-name">POST /wallet/v1/transfer</code>
+        </div>
+        <h4>Transfer Tokens</h4>
+        <p>Send native NEAR to any account. For token transfers, use <code>/intents/withdraw</code> (gasless) or <code>/call</code> for arbitrary <code>ft_transfer</code> calls.</p>
+        <div class="code-block" style="margin-top: 1rem;">
+          <pre><code>{ <span class="code-string">"receiver_id"</span>: <span class="code-string">"alice.near"</span>,
+  <span class="code-string">"amount"</span>: <span class="code-string">"1000000000000000000000000"</span> }</code></pre>
+        </div>
+      </div>
+
+      <!-- withdraw -->
+      <div class="intents-command glass-card fade-in">
+        <div class="intents-command-header">
+          <code class="syscall-name">POST /wallet/v1/intents/withdraw</code>
+          <span class="intents-gasless-badge">Gasless</span>
+        </div>
+        <h4>Withdraw to Any Chain</h4>
+        <p>Withdraw from NEAR Intents to any external address &mdash; Ethereum, Solana, Bitcoin, or NEAR. Automatic storage checks. Use <code>/dry-run</code> to simulate first.</p>
+        <div class="code-block" style="margin-top: 1rem;">
+          <pre><code><span class="code-comment">// Withdraw USDC to Ethereum</span>
+{ <span class="code-string">"chain"</span>: <span class="code-string">"ethereum"</span>,
+  <span class="code-string">"to"</span>: <span class="code-string">"0x1234...abcd"</span>,
+  <span class="code-string">"amount"</span>: <span class="code-string">"1000000"</span>,
+  <span class="code-string">"token"</span>: <span class="code-string">"usdc"</span> }
+
+<span class="code-comment">// Simulate first</span>
+POST /wallet/v1/intents/withdraw/dry-run</code></pre>
+        </div>
+      </div>
+
+      <!-- derive address -->
+      <div class="intents-command glass-card fade-in">
+        <div class="intents-command-header">
+          <code class="syscall-name">GET /wallet/v1/address</code>
+        </div>
+        <h4>Derive Address for Any Chain</h4>
+        <p>One wallet, deterministic addresses on every chain. Same wallet ID always produces the same NEAR, Ethereum, Bitcoin, and Solana addresses.</p>
+        <div class="code-block" style="margin-top: 1rem;">
+          <pre><code>GET /wallet/v1/address?chain=<span class="code-string">ethereum</span>
+<span class="code-comment">// &rarr; { "address": "0x7f3a...", "chain": "ethereum" }</span>
+
+GET /wallet/v1/address?chain=<span class="code-string">solana</span>
+<span class="code-comment">// &rarr; { "address": "7xKXt...", "chain": "solana" }</span></code></pre>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== AND THAT'S NOT ALL ==================== -->
+  <section class="section section-dark" id="beyond">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-tag">And That's Not All</span>
+        <h2>Intents + <span class="gradient-text">Custody-Grade Infrastructure</span></h2>
+        <p class="section-subtitle">Beyond swaps and transfers &mdash; everything an autonomous agent needs to operate safely with real money.</p>
+      </div>
+
+      <div class="product-features-grid">
+        <div class="product-feature glass-card fade-in">
+          <h4>Arbitrary Contract Calls</h4>
+          <p>Call <strong>any method</strong> on <strong>any NEAR contract</strong>. DeFi, DAOs, NFTs &mdash; your agent isn't limited to intents. Full smart contract access via <code>POST /call</code>.</p>
+        </div>
+        <div class="product-feature glass-card fade-in">
+          <h4>Policy Engine</h4>
+          <p>Spending limits (per-tx, daily, monthly), address whitelists, token restrictions. Enforced in hardware &mdash; the agent cannot bypass them, even if compromised.</p>
+        </div>
+        <div class="product-feature glass-card fade-in">
+          <h4>Multisig Approvals</h4>
+          <p>Transactions above a threshold require human approval via NEAR wallet signatures. 2-of-3 quorum, auto-execute when met. TEE holds funds until approved.</p>
+        </div>
+        <div class="product-feature glass-card fade-in">
+          <h4>Emergency Freeze</h4>
+          <p>One on-chain call freezes the wallet instantly. No API, no coordinator needed &mdash; works even if the entire infrastructure is down. Unfreeze by the controller only.</p>
+        </div>
+        <div class="product-feature glass-card fade-in">
+          <h4>Payment Checks</h4>
+          <p>Agent-to-agent payments. Create a check, share the key, recipient claims it. Partial claims, batch creation, expiry, reclaim. All gasless via solver relay.</p>
+        </div>
+        <div class="product-feature glass-card fade-in">
+          <h4>Full Audit Log</h4>
+          <p>Every operation is logged with timestamp, request ID, status, and details. Query the audit trail anytime. Complete visibility into what your agent did and when.</p>
+        </div>
+        <div class="product-feature glass-card fade-in">
+          <h4>Dry-Run Simulation</h4>
+          <p>Simulate any withdrawal or swap before executing. Check policy compliance, storage registration, estimated fees &mdash; all without spending a cent.</p>
+        </div>
+        <div class="product-feature glass-card fade-in">
+          <h4>TEE Key Custody</h4>
+          <p>Private keys live inside Intel TDX enclaves and are re-derived on every operation. Never exported, never stored in RAM. Not a promise &mdash; a hardware guarantee.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== WASI AGENT ==================== -->
+  <section class="section" id="wasi">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-tag">For Your Agent</span>
+        <h2>Use It From<br><span class="gradient-text">Inside Your Code</span></h2>
+        <p class="section-subtitle">Your WASI agent calls wallet functions as kernel syscalls. No HTTP, no keys, no configuration &mdash; just function calls.</p>
+      </div>
+
+      <div class="sc-layout fade-in">
+        <div class="sc-text">
+          <h3 style="font-size: 1.375rem; font-weight: 800; margin-bottom: 1rem;">Kernel-Level Wallet Access</h3>
+          <p>
+            When your agent runs on OutLayer, wallet operations are available as direct function calls
+            through the <code>outlayer:wallet</code> kernel interface. The TEE handles key derivation,
+            transaction signing, and policy enforcement automatically.
+          </p>
+          <p>
+            No API keys to manage. No HTTP requests to construct. No private keys to store.
+            Your agent just calls <code>wallet::swap()</code> and the kernel handles the rest &mdash;
+            inside the hardware enclave.
+          </p>
+        </div>
+        <div class="sc-code">
+          <div class="code-block">
+            <div class="code-header">
+              <span class="code-dot" style="background:#ff5f57"></span>
+              <span class="code-dot" style="background:#febc2e"></span>
+              <span class="code-dot" style="background:#28c840"></span>
+              <span class="code-title">my_trading_agent.rs</span>
+            </div>
+            <pre><code><span class="code-comment">// Check intents balance</span>
+<span class="code-keyword">let</span> balance = wallet::<span class="code-fn">get_balance</span>(
+    <span class="code-string">"near"</span>, <span class="code-string">"usdc.near"</span>, <span class="code-string">"intents"</span>
+)?;
+
+<span class="code-comment">// Swap NEAR &rarr; USDC (gasless)</span>
+<span class="code-keyword">let</span> result = wallet::<span class="code-fn">swap</span>(
+    <span class="code-string">"nep141:wrap.near"</span>,
+    <span class="code-string">"nep141:usdc.near"</span>,
+    <span class="code-string">"1000000000000000000000000"</span>,
+    <span class="code-string">""</span>  <span class="code-comment">// min_amount_out</span>
+)?;
+
+<span class="code-comment">// Withdraw to Ethereum</span>
+wallet::<span class="code-fn">withdraw</span>(
+    <span class="code-string">"ethereum"</span>,
+    <span class="code-string">"0x1234...abcd"</span>,
+    <span class="code-string">"1000000"</span>,
+    <span class="code-string">"usdc"</span>
+)?;
+
+<span class="code-comment">// Call any NEAR contract</span>
+wallet::<span class="code-fn">call</span>(
+    <span class="code-string">"v2.ref-finance.near"</span>,
+    <span class="code-string">"get_pool"</span>,
+    <span class="code-string">"{\"pool_id\": 79}"</span>,
+    <span class="code-fn">0</span>, <span class="code-fn">0</span>
+)?;</code></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== SKILLS CTA ==================== -->
+  <section class="section section-dark" id="skills">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-tag">AI-Native Skills</span>
+        <h2>Teach Any AI Agent.<br><span class="gradient-text">In Seconds.</span></h2>
+        <p class="section-subtitle">OutLayer publishes open Skills &mdash; structured knowledge that Claude, GPT, or any LLM-powered agent can install to learn how to use the wallet API, deploy WASI apps, and manage the CLI.</p>
+      </div>
+
+      <div class="skills-grid">
+        <div class="skill-card glass-card fade-in">
+          <div class="skill-header">
+            <span class="skill-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/><path d="M3.6 9h16.8M3.6 15h16.8"/><path d="M12 3a15 15 0 014 9 15 15 0 01-4 9 15 15 0 01-4-9 15 15 0 014-9z"/></svg>
+            </span>
+            <code class="skill-name">agent-custody</code>
+          </div>
+          <p>Multi-chain custody wallet with cross-chain swaps, payment checks, policy engine, and full NEAR Intents integration.</p>
+          <div class="skill-copy-row">
+            <code class="skill-copy-url">https://skills.outlayer.ai/agent-custody/SKILL.md</code>
+            <button class="skill-copy-btn" onclick="copyText(this, 'https://skills.outlayer.ai/agent-custody/SKILL.md')">Copy</button>
+          </div>
+        </div>
+        <div class="skill-card glass-card fade-in">
+          <div class="skill-header">
+            <span class="skill-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/><line x1="14" y1="4" x2="10" y2="20"/></svg>
+            </span>
+            <code class="skill-name">building-outlayer-apps</code>
+          </div>
+          <p>Build verifiable WASI apps on OutLayer. Covers Rust development, wallet integration, Payment Keys, and NEP-413 auth.</p>
+          <div class="skill-copy-row">
+            <code class="skill-copy-url">https://skills.outlayer.ai/building-outlayer-apps/SKILL.md</code>
+            <button class="skill-copy-btn" onclick="copyText(this, 'https://skills.outlayer.ai/building-outlayer-apps/SKILL.md')">Copy</button>
+          </div>
+        </div>
+        <div class="skill-card glass-card fade-in">
+          <div class="skill-header">
+            <span class="skill-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6.75 7.5l3 2.25-3 2.25m4.5 0h3M4.5 19.5h15a2.25 2.25 0 002.25-2.25V6.75A2.25 2.25 0 0019.5 4.5h-15A2.25 2.25 0 002.25 6.75v10.5A2.25 2.25 0 004.5 19.5z"/></svg>
+            </span>
+            <code class="skill-name">outlayer-cli</code>
+          </div>
+          <p>Deploy and manage WASI agents. Project scaffolding, GitHub/WASM deploy, secrets management, and execution modes.</p>
+          <div class="skill-copy-row">
+            <code class="skill-copy-url">https://skills.outlayer.ai/outlayer-cli/SKILL.md</code>
+            <button class="skill-copy-btn" onclick="copyText(this, 'https://skills.outlayer.ai/outlayer-cli/SKILL.md')">Copy</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-cta fade-in" style="margin-top: 3rem;">
+        <a href="https://skills.outlayer.ai/" target="_blank" class="btn btn-primary btn-lg">
+          Browse All Skills
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 12l8-8M6 4h6v6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a href="https://outlayer.fastnear.com/docs/getting-started" target="_blank" class="btn btn-glass btn-lg">
+          Read the Docs
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== CTA ==================== -->
+  <section class="section cta-section">
+    <div class="container">
+      <div class="cta-content fade-in">
+        <h2>Give Your Agent<br><span class="gradient-text">Financial Superpowers</span></h2>
+        <p>Full NEAR Intents access. Cross-chain swaps. Custody-grade security. Policy engine with multisig. All running inside Intel TDX enclaves.</p>
+        <div class="cta-buttons">
+          <a href="https://outlayer.fastnear.com/docs/getting-started" target="_blank" class="btn btn-primary btn-lg">
+            Get Started
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a href="https://outlayer.fastnear.com/playground" target="_blank" class="btn btn-glass btn-lg">
+            Try Playground
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <img src="symbol2d.png" alt="OutLayer" height="28">
+          <p>Verifiable OS for AI Agents.<br>Hardware-grade security out of the box.</p>
+        </div>
+        <div class="footer-links">
+          <div class="footer-col">
+            <h5>Product</h5>
+            <a href="https://outlayer.fastnear.com/docs/getting-started" target="_blank">Documentation</a>
+            <a href="https://outlayer.fastnear.com/playground" target="_blank">Playground</a>
+            <a href="/platform">Platform</a>
+            <a href="/products">Products</a>
+          </div>
+          <div class="footer-col">
+            <h5>Developers</h5>
+            <a href="https://github.com/fastnear/near-outlayer" target="_blank">GitHub</a>
+            <a href="https://outlayer.fastnear.com/docs/examples" target="_blank">Examples</a>
+            <a href="https://outlayer.fastnear.com/docs/api-reference" target="_blank">API Reference</a>
+          </div>
+          <div class="footer-col">
+            <h5>Community</h5>
+            <a href="https://x.com/out_layer" target="_blank">Twitter / X</a>
+            <a href="https://github.com/fastnear/near-outlayer" target="_blank">Open Source</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>Built on NEAR Protocol</span>
+        <span class="footer-sep">&middot;</span>
+        <span>Powered by Intel TDX</span>
+        <span class="footer-sep">&middot;</span>
+        <span>Secured by NEAR MPC Network</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+    function copySkillUrl() {
+      var url = document.getElementById('skill-url').textContent;
+      navigator.clipboard.writeText(url).then(function() {
+        var btn = document.getElementById('copy-skill-btn');
+        btn.textContent = 'Copied!';
+        setTimeout(function() { btn.textContent = 'Copy'; }, 2000);
+      });
+    }
+    function copyText(btn, text) {
+      navigator.clipboard.writeText(text).then(function() {
+        btn.textContent = 'Copied!';
+        setTimeout(function() { btn.textContent = 'Copy'; }, 2000);
+      });
+    }
+  </script>
+</body>
+</html>

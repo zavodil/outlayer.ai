@@ -171,6 +171,263 @@
 })();
 
 
+// ===== FLOATING SECTION DOTS =====
+(function initSectionDots() {
+  const dotsNav = document.getElementById('section-dots');
+  if (!dotsNav) return;
+
+  const dots = dotsNav.querySelectorAll('.section-dot');
+  const sectionIds = Array.from(dots).map(d => d.dataset.section);
+  const sections = sectionIds.map(id => document.getElementById(id)).filter(Boolean);
+
+  // Show dots after scrolling past hero
+  function updateDotsVisibility() {
+    if (window.scrollY > window.innerHeight * 0.5) {
+      dotsNav.classList.add('visible');
+    } else {
+      dotsNav.classList.remove('visible');
+    }
+  }
+
+  // Highlight active section
+  function updateActiveDot() {
+    let current = '';
+    for (const section of sections) {
+      const rect = section.getBoundingClientRect();
+      if (rect.top <= window.innerHeight * 0.4) {
+        current = section.id;
+      }
+    }
+    dots.forEach(dot => {
+      dot.classList.toggle('active', dot.dataset.section === current);
+    });
+  }
+
+  let dotTicking = false;
+  window.addEventListener('scroll', () => {
+    if (!dotTicking) {
+      requestAnimationFrame(() => {
+        updateDotsVisibility();
+        updateActiveDot();
+        dotTicking = false;
+      });
+      dotTicking = true;
+    }
+  });
+})();
+
+
+// ===== AGENT TERMINAL ANIMATION =====
+(function initTerminal() {
+  var terminal = document.getElementById('agent-terminal');
+  if (!terminal) return;
+  var body = document.getElementById('terminal-body');
+  if (!body) return;
+
+  var started = false;
+  var cursor = document.createElement('span');
+  cursor.className = 'term-cursor';
+  cursor.textContent = '\u2588';
+
+  var script = [
+    {
+      type: 'user',
+      parts: [
+        { text: 'Hey, I want to buy some Bitcoin with my NEAR. First, read this skill ', typed: true },
+        { text: 'https://skills.outlayer.ai/agent-custody/SKILL.md', typed: false, cls: 'term-val' }
+      ]
+    },
+    {
+      type: 'agent',
+      lines: [
+        { text: 'Reading skill...', cls: 'term-dim' },
+        { text: '\u2713 Loaded Outlayer Wallet skill', cls: 'term-ok' },
+        { text: '  gasless ops \u00b7 NEAR Intents \u00b7 cross-chain swaps', cls: 'term-dim' },
+        null,
+        { text: 'Agent: To get started, send me 1 NEAR to fund your agent wallet:', cls: 'term-key' },
+        { text: 'https://dashboard.outlayer.ai/wallet/fund?to=a1b2c3...a1b2&amount=1&token=wrap.near&dest=intents', cls: 'term-val' },
+      ]
+    },
+    {
+      type: 'user',
+      parts: [
+        { text: 'Done, sent 1 NEAR', typed: true }
+      ]
+    },
+    {
+      type: 'agent',
+      lines: [
+        { text: 'Agent: Got it! Your 1 NEAR is already deposited to Intents via the funding link.', cls: 'term-key' },
+        { text: 'Agent: Getting a swap quote...', cls: 'term-key' },
+        null,
+        { text: 'POST /wallet/v1/intents/swap/quote', cls: 'term-dim' },
+        { text: '  quote    1 NEAR \u2192 0.00003841 BTC', cls: 'term-key' },
+        { text: 'POST /wallet/v1/intents/swap', cls: 'term-dim' },
+        { text: '\u2713 swap     intent: ABC1...f93d', cls: 'term-ok' },
+        null,
+        { text: 'Agent: Done! 0.00003841 BTC in your intents balance.', cls: 'term-ok' },
+      ]
+    },
+    {
+      type: 'agent',
+      lines: [
+        { text: 'Agent: Withdrawing BTC to your ledger wallet bc1qxy2k...x0wlh', cls: 'term-key' },
+        null,
+        { text: 'POST /wallet/v1/intents/withdraw/dry-run', cls: 'term-dim' },
+        { text: '\u2713 policy   within limits', cls: 'term-ok' },
+        { text: 'POST /wallet/v1/intents/withdraw', cls: 'term-dim' },
+        { text: '\u2713 withdraw intent: D4e5...a81b', cls: 'term-ok' },
+        null,
+        { text: 'Agent: Sent 0.00003691 BTC \u2192 bc1qxy...0wlh \u2713', cls: 'term-ok' },
+      ]
+    },
+    {
+      type: 'agent',
+      lines: [
+        null,
+        { text: 'Agent: What else would you like to do?', cls: 'term-key' },
+        { text: '  \u2022 Set up a policy engine with spending limits & multisig approvals', cls: 'term-dim' },
+        { text: '  \u2022 Create payment checks for agent-to-agent transfers', cls: 'term-dim' },
+        { text: '  \u2022 Upload files to decentralized storage FastFS', cls: 'term-dim' },
+      ]
+    },
+  ];
+
+  function addLine() {
+    var div = document.createElement('div');
+    div.className = 'term-line visible';
+    body.appendChild(div);
+    body.scrollTop = body.scrollHeight;
+    return div;
+  }
+
+  function sleep(ms) {
+    return new Promise(function(r) { setTimeout(r, ms); });
+  }
+
+  function moveCursor(el) {
+    if (cursor.parentNode) cursor.parentNode.removeChild(cursor);
+    el.appendChild(cursor);
+    body.scrollTop = body.scrollHeight;
+  }
+
+  function typeChars(container, text, cls, delay) {
+    return new Promise(function(resolve) {
+      var span = document.createElement('span');
+      span.className = cls || 'term-cmd';
+      container.insertBefore(span, cursor);
+      var i = 0;
+      function next() {
+        if (i < text.length) {
+          span.textContent += text[i++];
+          body.scrollTop = body.scrollHeight;
+          setTimeout(next, delay);
+        } else {
+          resolve();
+        }
+      }
+      next();
+    });
+  }
+
+  function paste(container, text, cls) {
+    var span = document.createElement('span');
+    span.className = cls || 'term-val';
+    span.textContent = text;
+    container.insertBefore(span, cursor);
+    body.scrollTop = body.scrollHeight;
+  }
+
+  async function run() {
+    // Start with blinking cursor
+    var cursorLine = addLine();
+    moveCursor(cursorLine);
+    await sleep(1200);
+
+    for (var s = 0; s < script.length; s++) {
+      var step = script[s];
+
+      if (step.type === 'user') {
+        // Reuse cursor line or create new one
+        var line;
+        if (cursorLine) {
+          line = cursorLine;
+          cursorLine = null;
+        } else {
+          line = addLine();
+        }
+
+        var prompt = document.createElement('span');
+        prompt.className = 'term-prompt';
+        prompt.textContent = '> ';
+        line.insertBefore(prompt, cursor);
+        await sleep(300);
+
+        for (var p = 0; p < step.parts.length; p++) {
+          var part = step.parts[p];
+          if (part.typed) {
+            await typeChars(line, part.text, part.cls || 'term-cmd', 35);
+          } else {
+            await sleep(200);
+            paste(line, part.text, part.cls);
+          }
+        }
+        await sleep(700);
+
+      } else if (step.type === 'agent') {
+        // Cursor blinks for 1s while agent "thinks"
+        if (!cursorLine) {
+          cursorLine = addLine();
+          moveCursor(cursorLine);
+        }
+        await sleep(1000);
+        // Remove the empty cursor line before agent output
+        if (cursorLine && cursorLine.parentNode && !cursorLine.textContent.replace('\u2588', '').trim()) {
+          cursorLine.parentNode.removeChild(cursorLine);
+          cursorLine = null;
+        }
+
+        for (var l = 0; l < step.lines.length; l++) {
+          var ld = step.lines[l];
+          if (ld === null) {
+            addLine().innerHTML = '\u00a0';
+            await sleep(500);
+          } else {
+            var al = addLine();
+            var sp = document.createElement('span');
+            sp.className = ld.cls || 'term-key';
+            sp.textContent = ld.text;
+            al.appendChild(sp);
+            moveCursor(al);
+            await sleep(1000);
+          }
+        }
+        await sleep(500);
+        cursorLine = addLine();
+        moveCursor(cursorLine);
+      }
+    }
+
+    // End: remove cursor
+    if (cursor.parentNode) cursor.parentNode.removeChild(cursor);
+    // Remove trailing empty line
+    if (cursorLine && cursorLine.parentNode && !cursorLine.textContent.trim()) {
+      cursorLine.parentNode.removeChild(cursorLine);
+    }
+  }
+
+  var observer = new IntersectionObserver(function(entries) {
+    if (entries[0].isIntersecting && !started) {
+      started = true;
+      run();
+      observer.disconnect();
+    }
+  }, { threshold: 0.3 });
+
+  observer.observe(terminal);
+})();
+
+
 // ===== SMOOTH SCROLL FOR ANCHOR LINKS =====
 document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
   anchor.addEventListener('click', function (e) {
