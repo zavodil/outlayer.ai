@@ -2137,6 +2137,79 @@ img {
 .hero .fade-in:nth-child(5) { transition-delay: 0.55s; }
 .hero .fade-in:nth-child(6) { transition-delay: 0.65s; }
 
+/* ===== ANIMATED LOGO ===== */
+.hero-logo {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+
+.logo-svg {
+  width: 100%;
+  max-width: 465px;
+  height: auto;
+  filter: drop-shadow(0 2px 20px rgba(250, 204, 34, 0.15));
+}
+
+.fish-bob {
+  animation: fish-bob 3.5s ease-in-out infinite;
+  transform-origin: 200px 140px;
+}
+
+.fish-tail {
+  animation: fish-tail-wag 0.8s ease-in-out infinite;
+  transform-box: fill-box;
+  transform-origin: 100% 47%;
+}
+
+.fish-body {
+  animation: fish-body-wave 0.8s ease-in-out infinite 0.1s;
+  transform-box: fill-box;
+  transform-origin: 100% 47%;
+}
+
+.fish-head {
+  animation: fish-head-sway 3.5s ease-in-out infinite;
+  transform-box: fill-box;
+  transform-origin: 15% 50%;
+}
+
+.fish-eye {
+  animation: fish-eye-blink 5s ease-in-out infinite;
+  transform-box: fill-box;
+  transform-origin: 50% 50%;
+}
+
+@keyframes fish-bob {
+  0%, 100% { transform: translate(0, 0); }
+  20% { transform: translate(3px, -7px); }
+  50% { transform: translate(0px, -2px); }
+  70% { transform: translate(-3px, -6px); }
+}
+
+@keyframes fish-tail-wag {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(7deg); }
+  75% { transform: rotate(-7deg); }
+}
+
+@keyframes fish-body-wave {
+  0%, 100% { transform: rotate(0deg); }
+  30% { transform: rotate(2.5deg); }
+  70% { transform: rotate(-2.5deg); }
+}
+
+@keyframes fish-head-sway {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(-0.8deg); }
+  75% { transform: rotate(0.8deg); }
+}
+
+@keyframes fish-eye-blink {
+  0%, 91%, 100% { transform: scaleY(1); }
+  95.5% { transform: scaleY(0.1); }
+}
+
 /* ===== RESPONSIVE ===== */
 @media (max-width: 1024px) {
   .features-grid { grid-template-columns: repeat(2, 1fr); }
@@ -2185,6 +2258,10 @@ img {
 
   .hero-subtitle {
     font-size: 1rem;
+  }
+
+  .logo-svg {
+    max-width: 300px;
   }
 
   .features-grid,
