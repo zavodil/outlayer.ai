@@ -109,7 +109,7 @@ img {
 }
 
 .nav-logo img {
-  height: 32px;
+  height: 24px;
   width: auto;
 }
 
@@ -2208,6 +2208,63 @@ img {
 @keyframes fish-eye-blink {
   0%, 91%, 100% { transform: scaleY(1); }
   95.5% { transform: scaleY(0.1); }
+}
+
+/* ===== SYMBOL PAGE ===== */
+.symbol-fish {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 5rem;
+}
+
+.symbol-fish-svg {
+  width: 340px;
+  height: auto;
+  filter: drop-shadow(0 4px 40px rgba(250, 204, 34, 0.2));
+}
+
+.symbol-text {
+  text-align: center;
+}
+
+.symbol-logo-img {
+  height: 2rem;
+  width: auto;
+  margin-bottom: 2rem;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.symbol-body {
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+.symbol-body p {
+  font-size: 1.0625rem;
+  line-height: 1.8;
+  color: var(--text-muted);
+  margin-bottom: 1.5rem;
+}
+
+.symbol-sign-off {
+  font-family: var(--mono);
+  font-weight: 600;
+  font-size: 1.125rem !important;
+  color: var(--text) !important;
+  margin-top: 2.5rem;
+  letter-spacing: 0.05em;
+}
+
+@media (max-width: 768px) {
+  .symbol-fish-svg {
+    width: 240px;
+  }
+
+  .symbol-fish {
+    margin-bottom: 3.5rem;
+  }
 }
 
 /* ===== RESPONSIVE ===== */

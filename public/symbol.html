@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Symbol — OutLayer</title>
+  <meta name="description" content="The OutLayer symbol: a golden fish made of three chevrons, swimming forward and breaking through boundaries.">
+  <link rel="icon" type="image/png" href="outlayer.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <canvas id="bg-canvas"></canvas>
+  <div class="grain-overlay"></div>
+
+  <!-- Navigation -->
+  <nav class="nav" id="nav">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo">
+        <img src="logo-straight-line2d.png" alt="OutLayer" height="24">
+      </a>
+      <div class="nav-links">
+        <a href="/platform">Platform</a>
+        <a href="/products">Products</a>
+        <a href="/intents">Intents</a>
+        <a href="https://outlayer.fastnear.com/docs/getting-started" target="_blank" rel="noopener">Docs</a>
+        <a href="https://github.com/fastnear/near-outlayer" target="_blank" rel="noopener" class="nav-icon" aria-label="GitHub">
+          <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd"/></svg>
+        </a>
+        <a href="https://x.com/out_layer" target="_blank" rel="noopener" class="nav-icon" aria-label="Twitter">
+          <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+        </a>
+      </div>
+      <button class="nav-mobile-toggle" id="mobile-toggle" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ==================== SYMBOL ==================== -->
+  <section class="hero" style="min-height: 100vh; padding-bottom: 2rem;">
+    <div class="hero-content" style="max-width: 640px;">
+
+      <!-- Large animated fish -->
+      <div class="symbol-fish fade-in">
+        <svg class="symbol-fish-svg" viewBox="80 65 235 180" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="fishGold" x1="0.47" y1="-0.14" x2="0.53" y2="1.14">
+              <stop offset="0%" stop-color="#f83600"/>
+              <stop offset="50%" stop-color="#facc22"/>
+              <stop offset="100%" stop-color="#f83600"/>
+            </linearGradient>
+          </defs>
+          <g class="fish-bob">
+            <g class="fish-tail">
+              <path d="M129.7 136.6 C138.9 146.3 146.9 154.8 147.3 155.6 C147.9 156.6 142.9 163.3 130.5 178.3 L112.8 199.5 L103.2 200.0 C92.7 200.6 91.4 200.5 90.7 198.7 C90.2 197.4 117.3 163.8 120.9 161.4 C122.0 160.6 123.0 159.1 123.0 158.1 C123.0 155.7 93.9 124.7 89.8 122.7 L86.7 121.2 L93.1 120.6 C96.6 120.3 100.9 119.8 102.5 119.7 C112.9 118.4 111.3 117.4 129.7 136.6 Z" fill="url(#fishGold)"/>
+            </g>
+            <g class="fish-body">
+              <path d="M191.0 112.9 C209.8 133.2 225.2 150.2 225.2 150.5 C225.3 151.1 178.7 208.4 163.2 226.8 L156.8 234.3 L144.2 234.5 C137.2 234.6 128.2 235.0 124.3 235.5 C115.5 236.5 115.0 235.5 120.8 228.9 C122.9 226.5 128.4 219.3 133.0 213.0 C137.6 206.7 143.7 198.8 146.5 195.4 C149.2 192.0 155.1 184.9 159.5 179.4 C163.9 174.0 170.5 166.0 174.3 161.7 C178.0 157.4 181.0 153.4 181.0 152.9 C181.0 152.4 174.6 144.9 166.8 136.2 C158.9 127.5 145.8 112.7 137.7 103.2 C129.6 93.8 121.4 84.8 119.4 83.4 C117.5 81.9 116.2 80.4 116.6 80.1 C117.0 79.6 144.5 76.8 154.7 76.1 C156.4 76.0 164.9 84.6 191.0 112.9 Z" fill="url(#fishGold)"/>
+            </g>
+            <g class="fish-head">
+              <path d="M230.2 72.8 C238.2 75.1 245.1 79.3 251.1 85.7 C253.5 88.4 266.9 102.6 280.8 117.4 L306.1 144.2 L304.2 146.4 C303.1 147.5 290.1 163.1 275.3 181.0 C260.5 198.9 246.3 215.4 243.7 217.6 C241.2 219.8 236.4 223.1 233.1 224.9 C227.7 227.7 225.7 228.2 214.8 229.0 C208.0 229.5 200.9 230.2 198.9 230.6 C193.2 231.6 193.3 229.6 199.3 222.2 C202.3 218.5 207.3 211.9 210.5 207.5 C220.6 193.8 253.7 153.2 257.4 150.1 C258.3 149.4 259.0 148.0 259.0 147.1 C259.0 146.2 254.9 140.9 249.8 135.4 C244.8 130.0 231.5 115.1 220.3 102.3 C209.1 89.5 198.4 77.9 196.5 76.4 C194.5 74.9 193.2 73.5 193.4 73.2 C194.1 72.6 208.1 71.3 216.5 71.1 C220.7 71.1 226.2 71.7 230.2 72.8 Z" fill="url(#fishGold)"/>
+              <path class="fish-eye" d="M276.4 137.4 C269.5 140.4 267.9 148.0 272.9 153.1 C278.3 158.5 286.5 156.1 289.1 148.3 C290.1 145.2 290.0 144.2 288.5 141.4 C286.9 138.4 283.3 136.0 280.7 136.0 C280.0 136.1 278.1 136.7 276.4 137.4 Z" fill="#0d7a3a"/>
+            </g>
+          </g>
+        </svg>
+      </div>
+
+      <!-- Symbolism text -->
+      <div class="symbol-text fade-in">
+        <img src="logo-straight-line2d.png" alt="OutLayer >>>" class="symbol-logo-img">
+        <div class="symbol-body">
+          <p>
+            It's a symbol of breaking through. The fish is always moving &mdash; pushing past limits, outgrowing its layer, reaching for what's next. Fast, nimble, unstoppable.
+          </p>
+          <p>
+            And it's a goldfish &mdash; the creature you tell your wish to. A bit of magic in a world of cold cryptography. Because building the future should feel a little like making a wish.
+          </p>
+        </div>
+      </div>
+
+    </div>
+    <div class="hero-glow"></div>
+  </section>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <img src="symbol2d.png" alt="OutLayer" height="28">
+          <p>Verifiable OS for Agents.<br>Hardware-grade security out of the box.</p>
+        </div>
+        <div class="footer-links">
+          <div class="footer-col">
+            <h5>Product</h5>
+            <a href="https://outlayer.fastnear.com/docs/getting-started" target="_blank">Documentation</a>
+            <a href="https://outlayer.fastnear.com/playground" target="_blank">Playground</a>
+            <a href="/platform">Platform</a>
+            <a href="/products">Products</a>
+          </div>
+          <div class="footer-col">
+            <h5>Developers</h5>
+            <a href="https://github.com/fastnear/near-outlayer" target="_blank">GitHub</a>
+            <a href="https://outlayer.fastnear.com/docs/examples" target="_blank">Examples</a>
+            <a href="https://outlayer.fastnear.com/docs/api-reference" target="_blank">API Reference</a>
+          </div>
+          <div class="footer-col">
+            <h5>Community</h5>
+            <a href="https://x.com/out_layer" target="_blank">Twitter / X</a>
+            <a href="https://github.com/fastnear/near-outlayer" target="_blank">Open Source</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>Built on NEAR Protocol</span>
+        <span class="footer-sep">&middot;</span>
+        <span>Powered by Intel TDX</span>
+        <span class="footer-sep">&middot;</span>
+        <span>Secured by NEAR MPC Network</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
