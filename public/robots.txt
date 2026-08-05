@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /symbol
+
+Sitemap: https://outlayer.ai/sitemap.xml

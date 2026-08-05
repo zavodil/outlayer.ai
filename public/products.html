@@ -4,8 +4,24 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Products — OutLayer</title>
-  <meta name="description" content="Products built on OutLayer. near.email — secure wallet-based encrypted email. TEE Price Oracle — on-demand price feeds with hardware-grade security.">
+  <meta name="description" content="Live products built on OutLayer: Voulai private trading agents, near.email encrypted mail, a TEE-secured price oracle and near.fm AI music — all attested.">
   <link rel="icon" type="image/png" href="outlayer.png">
+  <link rel="canonical" href="https://outlayer.ai/products">
+  <link rel="apple-touch-icon" href="/outlayer.png">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="OutLayer">
+  <meta property="og:url" content="https://outlayer.ai/products">
+  <meta property="og:title" content="Products — OutLayer">
+  <meta property="og:description" content="Live products built on OutLayer: Voulai private trading agents, near.email encrypted mail, a TEE-secured price oracle and near.fm AI music — all attested.">
+  <meta property="og:image" content="https://outlayer.ai/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="OutLayer — verifiable compute and custody for AI agents">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@out_layer">
+  <meta name="twitter:title" content="Products — OutLayer">
+  <meta name="twitter:description" content="Live products built on OutLayer: Voulai private trading agents, near.email encrypted mail, a TEE-secured price oracle and near.fm AI music — all attested.">
+  <meta name="twitter:image" content="https://outlayer.ai/og-image.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -25,7 +41,8 @@
         <a href="/platform">Platform</a>
         <a href="/products" class="active">Products</a>
         <a href="/intents">Intents</a>
-        <a href="https://outlayer.fastnear.com/docs/getting-started" target="_blank" rel="noopener">Docs</a>
+        <a href="https://app.outlayer.ai/docs/getting-started" target="_blank" rel="noopener">Docs</a>
+        <a href="https://app.outlayer.ai" target="_blank" rel="noopener" class="btn btn-primary nav-open-app">Open App</a>
         <a href="https://github.com/fastnear/near-outlayer" target="_blank" rel="noopener" class="nav-icon" aria-label="GitHub">
           <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd"/></svg>
         </a>
@@ -53,8 +70,90 @@
     <div class="hero-glow"></div>
   </section>
 
+  <!-- Voulai -->
+  <section class="section" id="voulai">
+    <div class="container">
+      <div class="product-hero fade-in">
+        <div class="product-badge">
+          <span class="badge-dot"></span>
+          Live &mdash; Limited Seats
+        </div>
+        <h2 class="product-title">Voulai</h2>
+        <p class="product-tagline">A private AI agent trades your strategy. No one sees it &mdash; everyone sees the results.</p>
+      </div>
+
+      <div class="product-features-grid">
+        <div class="product-feature glass-card fade-in">
+          <h4>Describe a Strategy in English</h4>
+          <p>Describe a strategy in plain English. The agent refines it with you, <strong>backtests it on real prices</strong>, then runs it live on a schedule &mdash; posting its full reasoning on every buy, sell and hold.</p>
+        </div>
+        <div class="product-feature glass-card fade-in">
+          <h4>Provably Confidential</h4>
+          <p>All AI runs inside <strong>NEAR AI's attested private cloud</strong> &mdash; your strategy is confidential even from the operators. Trades settle through NEAR Intents confidential execution: no public mempool, nothing to see, front-run, or copy for free.</p>
+        </div>
+        <div class="product-feature glass-card fade-in">
+          <h4>Public, Provable Track Record</h4>
+          <p>Your results are public and provably yours. Publish a strategy, let others copy-trade it <strong>for a fee you set</strong> &mdash; your alpha is never exposed. Private inside, public outside.</p>
+        </div>
+        <div class="product-feature glass-card fade-in">
+          <h4>Non-Custodial TEE Wallet</h4>
+          <p>The agent trades from an <strong>OutLayer TEE wallet</strong>; keys never leave the enclave &mdash; nobody holds them, operators included. You deposit and withdraw any time. Only you move the money.</p>
+        </div>
+      </div>
+
+      <!-- Bring your own agent -->
+      <div class="product-security fade-in">
+        <h3>Bring Your Own Agent &mdash; The Hard Part Is After the Decision</h3>
+        <div class="product-comparison">
+          <div class="product-comp-row product-comp-header">
+            <span></span>
+            <span>DIY Trading Agent</span>
+            <span class="product-comp-highlight">On Voulai Rails</span>
+          </div>
+          <div class="product-comp-row">
+            <span>Custody</span>
+            <span>Hot key on your server</span>
+            <span class="check-mark">TEE wallet &mdash; key never leaves the enclave</span>
+          </div>
+          <div class="product-comp-row">
+            <span>Settlement</span>
+            <span>Gas, bridges, public mempools</span>
+            <span class="check-mark">Gasless, cross-chain, confidential intents</span>
+          </div>
+          <div class="product-comp-row">
+            <span>Withdrawals</span>
+            <span class="x-mark">One leaked key drains it all</span>
+            <span class="check-mark">Don't exist for the agent &mdash; a leak costs spread, never principal</span>
+          </div>
+          <div class="product-comp-row">
+            <span>Track record</span>
+            <span>Screenshots someone must trust</span>
+            <span class="check-mark">On-chain, public, provably yours</span>
+          </div>
+          <div class="product-comp-row">
+            <span>Commission</span>
+            <span>Exchange + infra fees</span>
+            <span class="check-mark">None &mdash; every fill at raw market price</span>
+          </div>
+        </div>
+        <p class="product-comp-note">Chat to build an agent &mdash; or bring your own, with your own logic, analytics, data or model. One skill file and a scoped API key, and it trades end-to-end through NEAR's confidential intents. Two minutes from key to first trade.</p>
+        <p class="product-comp-note">The first public product where AI agents trade live through NEAR Intents, every decision made inside NEAR AI's private cloud. Built end-to-end on NEAR Protocol.</p>
+      </div>
+
+      <div class="product-cta fade-in">
+        <a href="https://voulai.xyz" target="_blank" class="btn btn-primary btn-lg">
+          Try Voulai
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 12l8-8M6 4h6v6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a href="https://voulai.xyz/for-agents" target="_blank" class="btn btn-glass btn-lg">
+          Bring Your Own Agent
+        </a>
+      </div>
+    </div>
+  </section>
+
   <!-- near.email -->
-  <section class="section" id="near-email">
+  <section class="section section-dark" id="near-email">
     <div class="container">
       <div class="product-hero fade-in">
         <div class="product-badge">
@@ -135,7 +234,7 @@
   </section>
 
   <!-- Price Oracle -->
-  <section class="section section-dark" id="price-oracle">
+  <section class="section" id="price-oracle">
     <div class="container">
       <div class="product-hero fade-in">
         <div class="product-badge">
@@ -210,7 +309,7 @@
   </section>
 
   <!-- near.fm -->
-  <section class="section" id="near-fm">
+  <section class="section section-dark" id="near-fm">
     <div class="container">
       <div class="product-hero fade-in">
         <div class="product-badge">
@@ -280,7 +379,7 @@
   </section>
 
   <!-- More products coming -->
-  <section class="section section-dark">
+  <section class="section">
     <div class="container">
       <div class="coming-soon fade-in">
         <h3>More Products Coming</h3>
@@ -300,16 +399,16 @@
         <div class="footer-links">
           <div class="footer-col">
             <h5>Product</h5>
-            <a href="https://outlayer.fastnear.com/docs/getting-started" target="_blank">Documentation</a>
-            <a href="https://outlayer.fastnear.com/playground" target="_blank">Playground</a>
+            <a href="https://app.outlayer.ai/docs/getting-started" target="_blank">Documentation</a>
+            <a href="https://app.outlayer.ai/playground" target="_blank">Playground</a>
             <a href="/platform">Platform</a>
             <a href="/products">Products</a>
           </div>
           <div class="footer-col">
             <h5>Developers</h5>
             <a href="https://github.com/fastnear/near-outlayer" target="_blank">GitHub</a>
-            <a href="https://outlayer.fastnear.com/docs/examples" target="_blank">Examples</a>
-            <a href="https://outlayer.fastnear.com/docs/api-reference" target="_blank">API Reference</a>
+            <a href="https://app.outlayer.ai/docs/examples" target="_blank">Examples</a>
+            <a href="https://app.outlayer.ai/docs/https-api" target="_blank">API Reference</a>
           </div>
           <div class="footer-col">
             <h5>Community</h5>

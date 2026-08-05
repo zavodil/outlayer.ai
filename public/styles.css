@@ -2430,3 +2430,10 @@ img {
     align-items: center;
   }
 }
+
+/* Compact "Open App" CTA in the top nav */
+.nav-links .nav-open-app {
+  padding: 0.45rem 0.9rem;
+  font-size: 0.875rem;
+  border-radius: 8px;
+}

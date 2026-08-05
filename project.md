@@ -91,10 +91,12 @@ Showcase of products built on OutLayer.
 | Section             | Description                                               |
 | ------------------- | --------------------------------------------------------- |
 | Header              | "Built on OutLayer"                                       |
+| Voulai              | Private AI trading agents on confidential NEAR Intents; BYO-agent rails; table: DIY agent vs Voulai rails |
 | near.email          | Wallet-based encrypted email for NEAR; ECIES/secp256k1   |
 | Security Comparison | Table: Gmail vs ProtonMail vs near.email                  |
 | TEE Price Oracle    | On-demand oracle with Intel TDX; 13 tokens                |
 | Oracle Comparison   | Table: Traditional Oracles vs TEE Price Oracle            |
+| near.fm             | AI music generation; OutLayer payment checks + agent treasury |
 | Coming Soon         | Placeholder for future products                            |
 
 ---
@@ -137,8 +139,10 @@ Short description of the page.
 
 | Resource     | URL                                              |
 | ------------ | ------------------------------------------------ |
-| Docs         | https://outlayer.fastnear.com/docs/getting-started |
-| Playground   | https://outlayer.fastnear.com/playground          |
+| App          | https://app.outlayer.ai                          |
+| API          | https://api.outlayer.ai                          |
+| Docs         | https://app.outlayer.ai/docs/getting-started |
+| Playground   | https://app.outlayer.ai/playground          |
 | GitHub       | https://github.com/fastnear/near-outlayer        |
 | Twitter/X    | https://x.com/out_layer                          |
 | near.email   | https://near.email                               |
