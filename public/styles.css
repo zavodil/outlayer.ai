@@ -2431,9 +2431,9 @@ img {
   }
 }
 
-/* Compact "Open App" CTA in the top nav */
-.nav-links .nav-open-app {
-  padding: 0.45rem 0.9rem;
-  font-size: 0.875rem;
-  border-radius: 8px;
+/* Hero "Open App" CTA — right under the headline */
+.hero-cta {
+  display: flex;
+  justify-content: center;
+  margin: 0 0 2rem;
 }
